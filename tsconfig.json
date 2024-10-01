@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "target": "ES6",  // Support de la syntaxe moderne
+      "module": "commonjs",
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "strict": true,
+      "esModuleInterop": true
+    }
+  }
+  
