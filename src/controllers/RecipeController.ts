@@ -87,6 +87,29 @@ class RecipeController {
       }
     }
   };
+
+  public generateRecipeFromIngredients = async (
+    req: Request,
+    res: Response
+  ) => {
+    const { ingredients } = req.body;
+
+    if (!ingredients || !Array.isArray(ingredients)) {
+      return res
+        .status(400)
+        .json({ message: "Les ingrédients sont manquants ou incorrects." });
+    }
+
+    try {
+      const generatedRecipe =
+        await this.recipeService.generateRecipeFromIngredients(ingredients);
+      res.status(200).json({ recipe: generatedRecipe });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Erreur lors de la génération de la recette." });
+    }
+  };
 }
 
 export default RecipeController;
